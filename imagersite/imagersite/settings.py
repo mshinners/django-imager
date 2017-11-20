@@ -80,7 +80,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
         'TEST': {
-            'NAME': imagerTests
+            'NAME': 'imagerTests'
         }
     }
 }
