@@ -1,28 +1,45 @@
 """Test file for imagersite."""
 
 from __future__ import unicode_literals
-from django.contrib.auth.models import User
+from imager_profile.models import User, ImagerProfile
 from django.test import TestCase
 import factory
-
+import random
 from imagersite import models
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    """."""
+    """Create fake users for testing."""
 
     class Meta:
         """."""
 
         model = User
 
-    first_name = factory.Sequence(lambda n: "user{}".format(n))
-    last_name = factory.Sequence(lambda n: "user{}".format(n))
-    email = factory.Sequence(lambda n: "user{}@example.com".format(n))
+    username = factory.Sequence(lambda n: '{}'.format(factory.Faker('name'), n))
+    email = factory.Faker('email')
 
 
-class ProfileTestCase(TestCase):
-    """."""
+class ProfileFactory(factory.django.DjangoModelFactory):
+    """Create fake user profiles for testing."""
+
+    class Meta:
+        """."""
+
+        model = ImagerProfile
+
+    website = factory.Faker('url')
+    location = factory.Faker('address')
+    fee = random.uniform(200, 1000)
+    camera = factory.Faker('')
+    services = factory.Faker('')
+    bio = factory.faker('paragraph')
+    phone = factory.faker('phone_number')
+    photo_style = factory.faker('')
+
+
+class ProfileTests(TestCase):
+    """Test set-up for imagersite module."""
 
     def setUp(self):
         """."""
