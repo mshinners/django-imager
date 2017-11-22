@@ -8,7 +8,6 @@ from multiselectfield import MultiSelectField
 class ImagerProfile(models.Model):
     """Set up the user model."""
 
-
     website = models.URLField(max_length=50)
     location = models.CharField(max_length=50)
     fee = models.DecimalField(decimal_places=2, max_digits=6)
@@ -47,6 +46,5 @@ class ImagerProfile(models.Model):
         choices=photo_styles)
 
     user = models.OneToOneField(User, related_name='profile')
-    
-    is_active = models.BooleanField(default=True)
 
+    is_active = models.BooleanField(default=True)
