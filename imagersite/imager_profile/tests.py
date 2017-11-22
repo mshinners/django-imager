@@ -31,45 +31,38 @@ class ProfileFactory(factory.django.DjangoModelFactory):
     website = factory.Faker('url')
     location = factory.Faker('address')
     fee = random.uniform(200, 1000)
-    camera = factory.Faker('')
-    services = factory.Faker('')
+    camera = factory.Faker('words')
+    services = factory.Faker('words')
     bio = factory.faker('paragraph')
     phone = factory.faker('phone_number')
-    photo_style = factory.faker('')
+    photo_style = factory.faker('words')
 
 
 class ProfileTests(TestCase):
     """Test set-up for imagersite module."""
 
     def setUp(self):
-        """."""
-        self.users = []
-        for i in range(10):
-            user = UserFactory.create()
-            user.save()
-            self.users.append(user)
-
-    def test_here(self):
-        """."""
-        pass
-
-    def tearDown(self):
-        """."""
-        pass
-
-
-"""
-factory(faker)......
+        """Create a user for testing purposes."""
+        user = User(username='name', email='name@name.com')
+        user.set_password('password')
+        user.save()
+        profile = ImagerProfile(website='www.pics4you.com',
+                                location='Seattle',
+                                fee=500,
+                                camera='Nikon Pro 3500',
+                                services='Weddings',
+                                bio='I will take picutres for any occasion.',
+                                phone='206-555-1212',
+                                photo_style='Matte Finish',
+                                user=user
+                                )
+        profile.save()
 
 
-    website = factory.Faker('website')
-    location = factory.Faker('location')
-    fee = factory.Faker('fee')
-    camera = factory.Faker('camera_choices')
-    services = factory.Faker('service_options')
-    website = factory.Faker('website')
-    website = factory.Faker('website')
-    website = factory.Faker('website')
-    website = factory.Faker('website')
-    website = factory.Faker('website')
-"""
+    # def test_here(self):
+    #     """."""
+    #     pass
+
+    # def tearDown(self):
+    #     """."""
+    #     pass
