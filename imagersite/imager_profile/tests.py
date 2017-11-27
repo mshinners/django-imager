@@ -5,7 +5,7 @@ from imager_profile.models import User, ImagerProfile
 from django.test import TestCase
 import factory
 import random
-from imagersite import models
+# from imagersite import models
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -33,9 +33,9 @@ class ProfileFactory(factory.django.DjangoModelFactory):
     fee = random.uniform(200, 1000)
     camera = factory.Faker('words')
     services = factory.Faker('words')
-    bio = factory.faker('paragraph')
-    phone = factory.faker('phone_number')
-    photo_style = factory.faker('words')
+    bio = factory.Faker('paragraph')
+    phone = factory.Faker('phone_number')
+    photo_style = factory.Faker('words')
 
 
 class ProfileTests(TestCase):
@@ -58,11 +58,57 @@ class ProfileTests(TestCase):
                                 )
         profile.save()
 
+        user = UserFactory.create()
+        user.set_password(factory.Faker('password'))
+        user.save()
+        profile = ProfileFactory.create(user=user, is_active=False)
+        profile.save()
 
-    # def test_here(self):
-    #     """."""
-    #     pass
+        for _ in range(10):
+            user = UserFactory.create()
+            user.set_password(factory.Faker('password'))
+            user.save()
+            profile = ProfileFactory.create(user=user)
+            profile.save()
 
-    # def tearDown(self):
-    #     """."""
-    #     pass
+    def test_profile_has_website(self):
+        """Test that a profile has a website."""
+        active_user = User.objects.get(username='name')
+        one_profile = ImagerProfile.objects.get(user=active_user)
+        self.assertEquals(one_profile.website, 'www.pics4you.com')
+
+    def test_profile_has_location(self):
+        """Test that a profile has a location."""
+        active_user = User.objects.get(username='name')
+        one_profile = ImagerProfile.objects.get(user=active_user)
+        self.assertEquals(one_profile.location, 'Seattle')
+
+    def test_profile_has_fee(self):
+        """Test that a profile has a fee."""
+        active_user = User.objects.get(username='name')
+        one_profile = ImagerProfile.objects.get(user=active_user)
+        self.assertEquals(one_profile.fee, 500)
+
+    def test_profile_has_bio(self):
+        """Test that a profile has a bio."""
+        active_user = User.objects.get(username='name')
+        one_profile = ImagerProfile.objects.get(user=active_user)
+        self.assertEquals(one_profile.bio, 'I will take picutres for any occasion.')
+
+    def test_profile_has_phone(self):
+        """Test that a profile has a phone."""
+        active_user = User.objects.get(username='name')
+        one_profile = ImagerProfile.objects.get(user=active_user)
+        self.assertEquals(one_profile.phone, '206-555-1212')
+
+    def test_profile_has_photo_style(self):
+        """Test that a profile has a phone."""
+        active_user = User.objects.get(username='name')
+        one_profile = ImagerProfile.objects.get(user=active_user)
+        self.assertEquals(one_profile.photo_style, 'Matte Finish')
+
+    def test_profile_is_active_by_default(self):
+        """Test that a profile is active."""
+        active_user = User.objects.get(username='name')
+        one_profile = ImagerProfile.objects.get(user=active_user)
+        self.assertTrue(one_profile.is_active)
