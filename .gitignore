@@ -101,4 +101,4 @@ ENV/
 .mypy_cache/
 
 # Bootstrap source file
-bootstrap-source-file-KILLME/*
+bootstrap-source-file-KILLME2/*
