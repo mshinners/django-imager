@@ -101,4 +101,6 @@ ENV/
 .mypy_cache/
 
 # Bootstrap source file
-bootstrap-source-file-KILLME2/*
+imagersite/bootstrap-source-file-KILLME2/*
+
+.DS_Store
