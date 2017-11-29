@@ -27,7 +27,7 @@ class ImagerProfile(models.Model):
         ('SeniorPhotos', 'Senior Photos'),
         ('FamilyReunions', 'Family Reunions'),
         ('Birthdays', 'Birthdays'),
-        ('Boudoir', 'Boudior')
+        ('Boudoir', 'Boudoir')
     ]
     services = MultiSelectField(
         max_length=20,
