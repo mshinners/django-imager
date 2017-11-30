@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'imager_profile',
     'imagersite',
+    'imager_images',
 
 ]
 
@@ -129,3 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'imager_images/media')
+
+MEDIA_URL = '/media/'
