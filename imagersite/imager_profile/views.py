@@ -2,7 +2,10 @@ from django.shortcuts import render
 
 
 def home_view(request):
-    """."""
-    # import pdb; pdb.set_trace()
-
+    """Create home view callable."""
     return render(request, 'imagersite/home.html')
+
+
+def login(request):
+    """Create login view callable."""
+    return render(request, 'imagersite/login.html')
