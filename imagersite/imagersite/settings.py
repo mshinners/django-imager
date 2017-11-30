@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'imager_profile',
     'imagersite',
+    'imager_images',
 
 ]
 
@@ -131,6 +132,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'imager_images/media')
+
+MEDIA_URL = '/media/'
+
 ACCOUNT_ACTIVATION_DAYS = 7
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -141,3 +146,4 @@ else:
     EMAIL_HOST_PASSWORD = ''
 
 LOGIN_REDIRECT_URL = 'home'
+
