@@ -21,7 +21,7 @@ class Photo(models.Model):
     published = models.CharField(
         max_length=10,
         choices=published_choices)
-    user = models.ForeignKey(User, related_name='photos', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='photos')
 
 
 class Album(models.Model):
