@@ -5,4 +5,4 @@ def home_view(request):
     """."""
     # import pdb; pdb.set_trace()
 
-    return render(request, 'base.html')
+    return render(request, 'imagersite/home.html')
