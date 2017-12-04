@@ -20,14 +20,15 @@ from django.conf.urls.static import static
 from imager_profile.views import home_view
 from django.conf import settings
 from django.contrib.auth import views as auth_views
+from imagersite.views import HomeView
 
 urlpatterns = [
-    url(r'^$', home_view, name='home'),
+    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^login/', auth_views.login, name='login'),
     url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
@@ -37,4 +38,4 @@ urlpatterns = [
 
 
 
-url(r'^login/$', auth_views.login, {'template_name': 'core/login.html'}, name='login'),
+# url(r'^login/$', auth_views.login, {'template_name': 'core/login.html'}, name='login'),
