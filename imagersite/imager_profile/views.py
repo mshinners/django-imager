@@ -11,3 +11,13 @@ def login(request):
     """Create login view callable."""
     return render(request, 'imagersite/login.html')
 
+"""
+class-based view
+
+tempate name
+view we want
+query models
+
+override prebuilt methods:
+overwrite with super
+"""
