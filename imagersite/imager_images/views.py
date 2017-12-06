@@ -51,8 +51,13 @@ class AlbumDetailView(DetailView):
 
     template_name = 'imagersite/album_detail.html'
     model = Album
-    slug_field = 'title'
-    context_object_name = 'album'
+
+    def get_context_data(self, **kwargs):
+        """Get all public Albums from app."""
+        context = super(AlbumDetailView, self).get_context_data(**kwargs)
+        # import pdb; pdb.set_trace()
+        context['photos'] = context['album'].photos.all()
+        return context
 
 
 class PhotoDetailView(DetailView):
@@ -60,5 +65,3 @@ class PhotoDetailView(DetailView):
 
     template_name = 'imagersite/photo_detail.html'
     model = Photo
-    slug_field = 'title'
-    context_object_name = 'photo'

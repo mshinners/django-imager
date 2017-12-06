@@ -17,10 +17,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
-from imager_profile.views import home_view
+from imager_profile.views import HomeView
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-from imagersite.views import HomeView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
@@ -31,13 +30,3 @@ urlpatterns = [
     url(r'^profile/', include('imager_profile.urls')),
     url(r'^images/', include('imager_images.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
-
-
-
-
-
-
-# url(r'^login/$', auth_views.login, {'template_name': 'core/login.html'}, name='login'),
