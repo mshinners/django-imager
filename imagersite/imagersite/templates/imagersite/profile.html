@@ -2,17 +2,21 @@
 ​
 {% block somecontent %}
 <div>
-  <p>Here at the profile page.</p>
-  <ul>
-    <li>User {{ username }}</li>
-    <li>Website {{ website}}</li>
-    <li>Location {{ location }}</li>
-    <li>Price {{ fee }}</li>
-    <li>Camera {{ camera }}</li>
-    <li>Services {{ services }}</li>
-    <li>bio {{ bio }}</li>
-    <li>Phone Number {{ phone }}</li>
-    <li>Photo Styles {{ photo_style }}</li>
+  <h3>PROFILE PAGE</h3>
+  <ul style="list-style: none;">
+    <li>User: {{ user.username }}</li>
+    <li>Website: {{ profile.website }}</li>
+    <li>Location: {{ profile.location }}</li>
+    <li>Price: {{ profile.fee }}</li>
+    <li>Camera: {{ profile.camera }}</li>
+    <li>Services: {{ profile.services }}</li>
+    <li>bio: {{ profile.bio }}</li>
+    <li>Phone Number: {{ profile.phone }}</li>
+    <li>Photo Styles: {{ profile.photo_style }}</li>
+    <li>Albums (Public): {{ profile.al_public }}</li>
+    <li>Albums (Private): {{ profile.al_private }}</li>
+    <li>Photos (Public): {{ profile.ph_public }}</li>
+    <li>Photos (Private): {{ profile.ph_private }}</li>
   </ul>
 </div>
 {% endblock %}
