@@ -1,6 +1,7 @@
 from imager_images.models import Album, Photo
-from django.views.generic import DetailView, TemplateView, ListView
+from django.views.generic import DetailView, CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 class LibraryView(LoginRequiredMixin, ListView):
@@ -66,3 +67,33 @@ class PhotoDetailView(DetailView):
 
     template_name = 'imagersite/photo_detail.html'
     model = Photo
+
+
+class CreateAlbumView(LoginRequiredMixin, CreateView):
+    """Create a User's new album."""
+
+    template_name = 'imagersite/create.html'
+    model = Album
+    context_object_name = 'albums'
+    success_url = reverse_lazy('library')
+    fields = ['title', 'description', 'published']  # add photos and cover photo fields.
+
+    def form_valid(self, form):
+        """Assign user to form."""
+        form.instance.user = self.request.user
+        return super(CreateAlbumView, self).form_valid(form)
+
+
+class CreatePhotoView(LoginRequiredMixin, CreateView):
+    """Create a User's new photo."""
+
+    template_name = 'imagersite/create.html'
+    model = Photo
+    context_object_name = 'photos'
+    success_url = reverse_lazy('library')
+    fields = ['title', 'decription', 'file', 'published']
+
+    def form_valid(self, form):
+        """Assign user to form."""
+        form.instance.user = self.request.user
+        return super(CreatePhotoView, self).form_valid(form)
