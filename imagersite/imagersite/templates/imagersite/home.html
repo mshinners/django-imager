@@ -4,4 +4,9 @@
 <div>
     <p>Here at the home page.</p>
 </div>
+<div>
+    {% for photo in photos %}
+    <img src="{{ photo.file.url }}">
+    {% endfor %}
+</div>
 {% endblock %}

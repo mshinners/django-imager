@@ -132,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'imager_images/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
@@ -145,5 +145,4 @@ else:
     EMAIL_HOST_USER = ''
     EMAIL_HOST_PASSWORD = ''
 
-LOGIN_REDIRECT_URL = 'home'
-
+LOGIN_REDIRECT_URL = 'my_profile'

@@ -1,0 +1,22 @@
+{% extends 'imagersite/base.html' %}
+​
+{% block somecontent %}
+<div>
+  <h3>PROFILE PAGE</h3>
+  <ul style="list-style: none;">
+    <li>User: {{ user.user.username }}</li>
+    <li>Website: {{ user.website }}</li>
+    <li>Location: {{ user.location }}</li>
+    <li>Price: {{ user.fee }}</li>
+    <li>Camera: {{ user.camera }}</li>
+    <li>Services: {{ user.services }}</li>
+    <li>bio: {{ user.bio }}</li>
+    <li>Phone Number: {{ user.phone }}</li>
+    <li>Photo Styles: {{ user.photo_style }}</li>
+    <li>Albums (Public): {{ al_public }}</li>
+    <li>Albums (Private): {{ al_private }}</li>
+    <li>Photos (Public): {{ ph_public }}</li>
+    <li>Photos (Private): {{ ph_private }}</li>
+  </ul>
+</div>
+{% endblock %}
