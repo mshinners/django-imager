@@ -24,27 +24,27 @@ class HomeView(TemplateView):
         return context
 
 
-class ProfileView(DetailView):
+class ProfileView(TemplateView):
     """Private profile page view."""
 
     template_name = 'imagersite/profile.html'
     model = ImagerProfile
     context_object_name = 'profile'
 
-    def get_object(self):
+    def get_context_data(self, **kwargs):
         """Get current user profile."""
-        import pdb; pdb.set_trace()
-        self.object = super(ProfileView, self).get_object()
-        profile = self.request.user.profile
+        user = ImagerProfile.objects.get(user__username=self.request.user.username)
+        # import pdb;
+        context = super(ProfileView, self).get_context_data(**kwargs)
         photos = self.request.user.photos.all()
         ph_public = len(photos.filter(published="Public"))
         ph_private = len(photos.filter(published="Private"))
         albums = self.request.user.albums.all()
         al_public = len(albums.filter(published="Public"))
         al_private = len(albums.filter(published="Private"))
-        # return {'user': user, 'ph_public': ph_public, 'ph_private': ph_private,
-        #         'al_public': al_public, 'al_private': al_private}
-        return profile
+        context = {'user': user, 'ph_public': ph_public, 'ph_private': ph_private,
+                   'al_public': al_public, 'al_private': al_private}
+        return context
 
 
 class OtherProfileView(DetailView):
@@ -56,10 +56,10 @@ class OtherProfileView(DetailView):
     context_object_name = 'profile'
 
     def get_context_data(self, **kwargs):
+        """."""
         context = super(OtherProfileView, self).get_context_data(**kwargs)
         context['user'] = context['profile'].user
         return context
-
 
 
 class ProfileEditView(UpdateView):
@@ -68,7 +68,7 @@ class ProfileEditView(UpdateView):
     template_name = 'imagersite/edit.html'
     model = ImagerProfile
     success_url = reverse_lazy('profile')
-    fields = ['website', 'location', 'fee', 'camera', 'services', 'bio', 'phone_number', 'photo_style']
+    fields = ['website', 'location', 'fee', 'camera', 'services', 'bio', 'phone', 'photo_style']
 
     def get_object(self):
         """Return the user."""
