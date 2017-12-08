@@ -1,8 +1,9 @@
 from imager_images.models import Album, Photo
 from django.views.generic import DetailView, TemplateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class LibraryView(ListView):
+class LibraryView(LoginRequiredMixin, ListView):
     """Set up list view for all albums and pictures."""
 
     template_name = 'imagersite/library.html'

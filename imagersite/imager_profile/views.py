@@ -5,6 +5,7 @@ from django.views.generic import DetailView, TemplateView, ListView
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 from random import choice
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomeView(TemplateView):
@@ -24,7 +25,7 @@ class HomeView(TemplateView):
         return context
 
 
-class ProfileView(TemplateView):
+class ProfileView(LoginRequiredMixin, TemplateView):
     """Private profile page view."""
 
     template_name = 'imagersite/profile.html'
@@ -62,7 +63,7 @@ class OtherProfileView(DetailView):
         return context
 
 
-class ProfileEditView(UpdateView):
+class ProfileEditView(LoginRequiredMixin, UpdateView):
     """View for editing the users profile."""
 
     template_name = 'imagersite/edit.html'
