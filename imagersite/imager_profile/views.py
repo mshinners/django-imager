@@ -66,9 +66,9 @@ class OtherProfileView(DetailView):
 class ProfileEditView(LoginRequiredMixin, UpdateView):
     """View for editing the users profile."""
 
-    template_name = 'imagersite/edit.html'
+    template_name = 'imagersite/profile_edit.html'
     model = ImagerProfile
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('my_profile')
     fields = ['website', 'location', 'fee', 'camera', 'services', 'bio', 'phone', 'photo_style']
 
     def get_object(self):

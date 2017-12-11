@@ -1,6 +1,6 @@
 """."""
 from django.conf.urls import url
-from imager_images.views import LibraryView, AlbumView, AlbumDetailView, PhotoView, PhotoDetailView, CreatePhotoView, CreateAlbumView
+from imager_images.views import LibraryView, AlbumView, AlbumDetailView, PhotoView, PhotoDetailView, CreatePhotoView, CreateAlbumView, PhotoEditView, AlbumEditView
 
 
 urlpatterns = [
@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'albums/(?P<pk>\d+)$', AlbumDetailView.as_view(), name='detail_album'),
     url(r'create_photo/$', CreatePhotoView.as_view(), name='create_photo'),
     url(r'create_album/$', CreateAlbumView.as_view(), name='create_album'),
+    url(r'photos/(?P<pk>\d+)/edit$', PhotoEditView.as_view(), name='edit_photo'),
+    url(r'albums/(?P<pk>\d+)/edit$', AlbumEditView.as_view(), name='edit_album'),
 ]

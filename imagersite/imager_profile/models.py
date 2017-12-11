@@ -35,7 +35,7 @@ class ImagerProfile(models.Model):
         max_length=250,
         choices=service_options, null=True, blank=True)
 
-    bio = models.CharField(max_length=500, null=True, blank=True)
+    bio = models.TextField(max_length=500, null=True, blank=True)
     phone = models.CharField(max_length=10, null=True, blank=True)
     photo_styles = [
         ('Matte', 'Matte Finish'),

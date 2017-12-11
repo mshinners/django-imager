@@ -1,0 +1,11 @@
+{% extends 'imagersite/base.html' %}
+
+{% block somecontent %}
+<div>
+    <form  enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.as_ul }}
+    <input type="submit" value='Update Profile'/>
+    </form>
+</div>
+{% endblock %}
