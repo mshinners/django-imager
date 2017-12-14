@@ -2,10 +2,10 @@
 
 {% block somecontent %}
 <div>
+    <input type="submit" value='Update Profile'/>
     <form  enctype="multipart/form-data" method="post">
         {% csrf_token %}
         {{ form.as_ul }}
-    <input type="submit" value='Update Profile'/>
     </form>
 </div>
 {% endblock %}

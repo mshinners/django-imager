@@ -51,15 +51,16 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 class OtherProfileView(DetailView):
     """Set up profile view for other users."""
 
-    template_name = 'imagersite/profile.html'
+    template_name = 'imagersite/other_profile.html'
     model = ImagerProfile
-    slug_field = 'user__username'
     context_object_name = 'profile'
+    slug_field = 'user__username'
 
     def get_context_data(self, **kwargs):
         """."""
         context = super(OtherProfileView, self).get_context_data(**kwargs)
         context['user'] = context['profile'].user
+        context['photos'] = context['profile'].user.photos.all()
         return context
 
 

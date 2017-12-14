@@ -12,7 +12,12 @@
   <a class="lightbox" href="{% url 'detail_photo' photo.id  %}">
     <img src="{{ photo.file.url }}">
   </a>
- <a class="nav-link js-scroll-trigger" href="{% url 'edit_album'  album.id %}">Edit Album</a>
+<div id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" style="color:black"; href="{% url 'edit_album'  album.id %}">Edit Album</a>
+        </li>
+    </ul>
 </div>  
 {% endfor %}
 {% endblock %}
