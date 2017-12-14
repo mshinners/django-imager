@@ -12,6 +12,7 @@
   <a class="lightbox" href="{% url 'detail_photo' photo.id  %}">
     <img src="{{ photo.file.url }}">
   </a>
+ <a class="nav-link js-scroll-trigger" href="{% url 'edit_album'  album.id %}">Edit Album</a>
 </div>  
 {% endfor %}
 {% endblock %}

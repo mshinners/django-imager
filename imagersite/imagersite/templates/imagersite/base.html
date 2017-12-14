@@ -27,7 +27,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/creative.min.css' %}" rel="stylesheet">
-
+    <!-- My custom css items -->
+    <link href="{% static 'css/tables.css' %}" rel="stylesheet">
   </head>
 
   <body id="page-top">
@@ -54,6 +55,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="{% url 'library' %}">My Library</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'create_album' %}">Add Album</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'create_photo' %}">Add Photo</a>
             </li>
             {% endif %}
             <li class="nav-item">
@@ -90,49 +97,6 @@
       </div>
     </section>
 
-    <section id="services">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">More Options</h2>
-            <hr class="my-4">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Beautiful shots</h3>
-              <p class="text-muted mb-0">Show off your favorite images.</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Store your gallery</h3>
-              <p class="text-muted mb-0">Display a whole gallery of photos!</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">We'll match you</h3>
-              <p class="text-muted mb-0">Complete your profile to prospective clients.</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Tell them what your good at</h3>
-              <p class="text-muted mb-0">You can specialize in particular types of photography!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="p-0" id="portfolio">
       <div class="container-fluid p-0">
         <div class="row no-gutters popup-gallery">
@@ -142,10 +106,10 @@
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    Category
+                    Album:
                   </div>
                   <div class="project-name">
-                    Project Name
+                    My Kiddos
                   </div>
                 </div>
               </div>
@@ -157,10 +121,10 @@
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    Category
+                    Album:
                   </div>
                   <div class="project-name">
-                    Project Name
+                    Party Time!
                   </div>
                 </div>
               </div>
@@ -172,10 +136,10 @@
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    Category
+                    Album:
                   </div>
                   <div class="project-name">
-                    Project Name
+                    Holidays
                   </div>
                 </div>
               </div>
@@ -187,10 +151,10 @@
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    Category
+                    Album:
                   </div>
                   <div class="project-name">
-                    Project Name
+                    Outdoor Fun
                   </div>
                 </div>
               </div>
@@ -202,10 +166,10 @@
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    Category
+                    Album:
                   </div>
                   <div class="project-name">
-                    Project Name
+                    Monty Python
                   </div>
                 </div>
               </div>
@@ -217,10 +181,10 @@
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    Category
+                    Album:
                   </div>
                   <div class="project-name">
-                    Project Name
+                    Misc
                   </div>
                 </div>
               </div>
@@ -229,13 +193,6 @@
         </div>
       </div>
     </section>
-
- <!--    <section class="bg-dark text-white">
-      <div class="container text-center">
-        <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
-      </div>
-    </section> -->
 
     <section id="contact">
       <div class="container">
