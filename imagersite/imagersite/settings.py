@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DATABASE_PASSWORD', '')
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('HOSTS', '')
 
 
 # Application definition
@@ -137,12 +137,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:
-    EMAIL_HOST = ''
-    EMAIL_PORT = ''
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''
+
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'mikes.django.imager.project@gmail.com'
+# EMAIL_HOST_PASSWORD = os.environ.get('GMAIL_PW')
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# if DEBUG:
+# else:
 
 LOGIN_REDIRECT_URL = 'my_profile'
+
+# maybe:::::
+
+# DEFAULT_FROM_EMAIL
+# SEVER_EMAIL
